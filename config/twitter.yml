@@ -1,0 +1,14 @@
+default: &default
+  app_id: "AZN92W6vv7TTx4dQVYTOOdadq"
+  app_secret: "eWlLlofm41v2PYdnTEZk0lEGZ06lkowCwA6thd2BwJYO4c0zNQ"
+  access_token: "14755226-3fO3pm1hUdfWqyMeRLl2cLUG5qcsTCWkExfsrGWCa"
+  token_secret: "9fbY44Kb0OpMxPdYhvmytYXdagqDZQQECKgD3rl46MLAq"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
