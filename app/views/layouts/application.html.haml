@@ -22,7 +22,14 @@
   %body
     = render 'shared/navbar'
 
-    #main-container.container= yield
+    #main-container.container
+      / flash messages
+      - flash.each do |name, msg|
+        = content_tag :div, class: "alert alert-info alert-dismissible #{name}" do
+          = msg
+          %button.close{"data-dismiss"=>"alert"}
+            %span &times;
+      =yield
 
     = render 'shared/footer'
     = render 'shared/turbolinks_spinner'

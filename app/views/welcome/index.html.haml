@@ -13,22 +13,23 @@
     %th{:colspan=>"2"} Status
   %tbody
     - @battles.each do |battle|
-      %td
-        = battle.name
-      - battle.hashtags.each do |h|
+      %tr
         %td
-          = h.name
+          = battle.name
+        - battle.hashtags.each do |h|
+          %td
+            = h.name
+          %td
+            = battle.hashtag_count(h)
         %td
-          = battle.hashtag_count(h)
-      %td
-        - if battle.active?
-          %span.label.label-success
-            In Progress
-        - else
-          %span.label.label-default
-            Stopped
-      %td
-        - unless !battle.active?
-          = link_to battle, method: :delete, data: {confirm: 'Are you sure?'} do
-            %span.label.label-danger
-              End Battle
+          - if battle.active?
+            %span.label.label-success
+              In Progress
+          - else
+            %span.label.label-default
+              Stopped
+        %td
+          - unless !battle.active?
+            = link_to battle, method: :delete, data: {confirm: 'Are you sure?'} do
+              %span.label.label-danger
+                End Battle
