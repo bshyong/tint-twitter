@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831043716) do
+ActiveRecord::Schema.define(version: 20140831082825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140831043716) do
   add_index "battle_results", ["hashtag_id", "battle_id"], name: "index_battle_results_on_hashtag_id_and_battle_id", using: :btree
 
   create_table "battles", force: true do |t|
-    t.boolean  "active",     default: false
+    t.boolean  "active",     default: true
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

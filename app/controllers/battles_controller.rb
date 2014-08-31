@@ -1,22 +1,9 @@
 class BattlesController < ApplicationController
   before_action :set_battle, only: [:show, :edit, :update, :destroy]
 
-  # GET /battles
-  def index
-    @battles = Battle.all
-  end
-
-  # GET /battles/1
-  def show
-  end
-
   # GET /battles/new
   def new
     @battle = Battle.new
-  end
-
-  # GET /battles/1/edit
-  def edit
   end
 
   # POST /battles
@@ -24,25 +11,16 @@ class BattlesController < ApplicationController
     @battle = Battle.new(battle_params)
 
     if @battle.save
-      redirect_to @battle, notice: 'Battle was successfully created.'
+      redirect_to root_path, notice: 'Battle was successfully created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /battles/1
-  def update
-    if @battle.update(battle_params)
-      redirect_to @battle, notice: 'Battle was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
   # DELETE /battles/1
   def destroy
-    @battle.destroy
-    redirect_to battles_url, notice: 'Battle was successfully destroyed.'
+    @battle.update_attribute(:active, false)
+    redirect_to root_path, notice: 'Battle was successfully ended.'
   end
 
   private

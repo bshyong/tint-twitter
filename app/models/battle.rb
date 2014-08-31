@@ -5,7 +5,7 @@ class Battle < ActiveRecord::Base
   validates :hashtag_one, :hashtag_two, presence: true
 
   # callbacks
-  after_save :set_up_hashtags
+  after_create :set_up_hashtags
 
   def hashtag_first
     self.hashtags.first
@@ -16,7 +16,7 @@ class Battle < ActiveRecord::Base
   end
 
   def hashtag_count(hashtag)
-    BattleResult.where(battle: self, hashtag: hashtag).count
+    BattleResult.where(battle: self, hashtag: hashtag).first.count
   end
 
   private
