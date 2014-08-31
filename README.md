@@ -1,7 +1,15 @@
 # Hashtag Battle
 
+## Running the application
+The application uses the TweetStream gem, which is based on EventMachine in order to consume tweets from the Twitter streaming API.
 
-This web application based on the following technology stack:
+There is a rake task that will kick off the tweet consuming process, and it can be started by running `bundle exec rake twitter:stream`; use `nohup bundle exec rake twitter:stream &` to run in the background.  The standard output will be redirected to `nohup.out` in the current directory.
+
+Once a hashtag battle is started, the battle will be active immediately. The rake task will check every 60 seconds for new hashtags and active Battles, in which case the counters for the hashtags will begin to increment.
+
+## Technology stack
+
+This web application is based on the following technology stack:
 
 * [Ruby 2.1.2][1]
 * [Rails 4.1.4][2]
@@ -25,11 +33,5 @@ This web application based on the following technology stack:
 
 This app is currently deployed on DigitalOcean; please ask for the URL to access a demo.
 
-## Running the application
-The application uses the TweetStream gem, which is based on EventMachine in order to consume tweets from the Twitter streaming API.
-
-There is a rake task that will kick off the tweet consuming process, and it can be started by running `bundle exec rake twitter:stream`; use `nohup bundle exec rake twitter:stream &` to run in the background.  The standard output will be redirected to `nohup.out` in the current directory.
-
-Once a hashtag battle is started, the battle will be active immediately. The rake task will check every 60 seconds for new hashtags and active Battles, in which case the counters for the hashtags will begin to increment.
 
 
